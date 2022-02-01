@@ -113,12 +113,16 @@ def update_output(n_clicks, value, value2):
     if n_clicks > 0 & value2 != 'Select User':
         return 'You have entered: \n{}'.format(value)
 
-# def update_df(n_clicks, value, user):
-#     if n_clicks > 0:
-#         global df 
-#         split = value.loc[]
-#         df = df.append(value, ignore_index=True)
-#         #return df
+def update_df(n_clicks, value, user):
+    if n_clicks > 0:
+        global df 
+        split = value.split()
+        head, sep, tail = split[2].partition('/')
+        split[2] = head
+        split = split[:3]
+        split.append(user)
+        df.loc[len(df)] = split
+        pd.df.to_csv('wewdle.csv')
 
 if __name__ == '__main__':
     app.run_server(debug=True)
